@@ -10,7 +10,7 @@
 const WHARF_CONFIG = {
   // Supabase (public — safe to include in extension)
   SUPABASE_URL: 'https://yfhwmbywrgzkdddwddtd.supabase.co',
-  SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlmaHdtYnl3cmd6a2RkZHdkZHRkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzExMDE2MTcsImV4cCI6MjA4NjY3NzYxN30.v8ZOqCoRUMACt_itCnrnzVCz21-M_ZdWHbQXI5Db9wc',
+  SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIcCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlmaHdtYnl3cmd6a2RkZHdkZHRkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzExMDE2MTcsImV4cCI6MjA4NjY3NzYxN30.v8ZOqCoRUMACt_itCnrnzVCz21-M_ZdWHbQXI5Db9wc',
 
   // Default backend API URL (user can override in Options page)
   DEFAULT_API_URL: 'http://localhost:3001',

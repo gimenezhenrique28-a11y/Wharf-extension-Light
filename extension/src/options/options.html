@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talent Wharf - Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-container">
+    <!-- Header -->
+    <header class="options-header">
+      <div class="header-content">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <rect width="24" height="24" rx="6" fill="#0a66c2"/>
+          <path d="M7 8h10M7 12h6M7 16h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <h1>Talent Wharf Settings</h1>
+          <p>Configure your Chrome extension connection</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Connection Status Banner -->
+    <div id="status-banner" class="status-banner status-unknown">
+      <span id="status-text">Checking connection...</span>
+    </div>
+
+    <!-- Settings Form -->
+    <main class="options-main">
+      <!-- API Configuration -->
+      <section class="settings-section">
+        <h2>API Connection</h2>
+        <p class="section-desc">Connect to your Talent Wharf backend. You can find your API key in the dashboard under Settings &gt; API Keys.</p>
+
+        <div class="form-group">
+          <label for="api-url">Backend API URL</label>
+          <input type="url" id="api-url" placeholder="http://localhost:3001/api" autocomplete="off">
+          <span class="form-hint">The base URL of your Talent Wharf API server</span>
+        </div>
+
+        <div class="form-group">
+          <label for="api-key">API Key</label>
+          <div class="input-group">
+            <input type="password" id="api-key" placeholder="wharf_sk_..." autocomplete="off">
+            <button id="toggle-key-btn" class="btn-icon-input" title="Show/hide key">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+          <span class="form-hint">Your secret API key from the dashboard. This is stored locally and never shared.</span>
+        </div>
+
+        <div class="form-actions">
+          <button id="test-connection-btn" class="btn btn-secondary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            Test Connection
+          </button>
+          <button id="save-btn" class="btn btn-primary">Save Settings</button>
+        </div>
+      </section>
+
+      <!-- Capture Preferences -->
+      <section class="settings-section">
+        <h2>Capture Preferences</h2>
+
+        <div class="form-group toggle-group">
+          <div class="toggle-info">
+            <label>Show Notifications</label>
+            <span class="form-hint">Display toast notifications when candidates are captured</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="show-notifications" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="form-group toggle-group">
+          <div class="toggle-info">
+            <label>Auto-Capture on LinkedIn</label>
+            <span class="form-hint">Automatically capture profiles when you visit them (experimental)</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="auto-capture">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Data Management -->
+      <section class="settings-section">
+        <h2>Data</h2>
+
+        <div class="form-group">
+          <div class="data-actions">
+            <button id="clear-history-btn" class="btn btn-outline-danger">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="3 6 5 6 21 6"/>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              </svg>
+              Clear Capture History
+            </button>
+            <button id="export-history-btn" class="btn btn-secondary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Export History (JSON)
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section class="settings-section about-section">
+        <h2>About</h2>
+        <div class="about-info">
+          <p><strong>Talent Wharf Chrome Extension</strong></p>
+          <p>Version 1.0.0</p>
+          <p class="about-desc">Capture candidate profiles from LinkedIn and Gmail directly into your recruitment pipeline.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

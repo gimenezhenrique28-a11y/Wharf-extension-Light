@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talent Wharf</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="popup-header">
+      <div class="popup-logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect width="24" height="24" rx="6" fill="#0a66c2"/>
+          <path d="M7 8h10M7 12h6M7 16h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <h1>Talent Wharf</h1>
+          <span class="popup-version">v1.0.0</span>
+        </div>
+      </div>
+      <div id="connection-status" class="status-dot status-checking" title="Checking connection..."></div>
+    </header>
+
+    <!-- Not Connected View -->
+    <div id="not-connected-view" class="view" style="display: none;">
+      <div class="empty-state">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <p>Not connected to your Talent Wharf account</p>
+        <button id="open-settings-btn" class="btn btn-primary">Configure API Key</button>
+      </div>
+    </div>
+
+    <!-- Connected View -->
+    <div id="connected-view" class="view" style="display: none;">
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <span class="stat-value" id="today-count">0</span>
+          <span class="stat-label">Today</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="week-count">0</span>
+          <span class="stat-label">This Week</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="total-count">0</span>
+          <span class="stat-label">Total</span>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="section">
+        <h2 class="section-title">Quick Actions</h2>
+        <div class="action-buttons">
+          <button id="capture-page-btn" class="btn btn-secondary btn-full" disabled>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M5 12h14"/>
+            </svg>
+            Capture from this page
+          </button>
+          <button id="open-dashboard-btn" class="btn btn-outline btn-full">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+            </svg>
+            Open Dashboard
+          </button>
+        </div>
+      </div>
+
+      <!-- Recent Captures -->
+      <div class="section">
+        <div class="section-header">
+          <h2 class="section-title">Recent Captures</h2>
+          <button id="clear-history-btn" class="btn-link" title="Clear history">Clear</button>
+        </div>
+        <div id="capture-list" class="capture-list">
+          <div class="empty-state small">
+            <p>No captures yet. Visit a LinkedIn profile or Gmail thread to get started.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="popup-footer">
+      <button id="footer-settings-btn" class="btn-icon" title="Settings">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+      <span class="footer-text">Talent Wharf</span>
+      <a id="footer-help-link" href="#" class="btn-icon" title="Help">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+      </a>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
